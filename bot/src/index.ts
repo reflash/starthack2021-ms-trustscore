@@ -13,6 +13,9 @@ bot.start((ctx) => {
 });
 
 bot.on('text', async (ctx) => {
+  if (!ctx.message?.text) {
+    ctx.reply('Access denied');
+  }
   const inputText: string | undefined = ctx.message?.text;
   try {
     if (
@@ -21,7 +24,7 @@ bot.on('text', async (ctx) => {
         inputText?.startsWith('https://www.'))
     ) {
       const res = await axios.post(
-        'http://localhost:3000/api/text',
+        'http://localhost:5000/api/text',
         { link: inputText },
         {
           headers: {
