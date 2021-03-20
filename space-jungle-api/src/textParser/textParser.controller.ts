@@ -2,6 +2,8 @@ import * as express from 'express';
 import Controller from '../interfaces/controller.interface';
 import { parse } from 'node-html-parser';
 import fetch from 'node-fetch';
+import * as fs from 'fs';
+import * as pth from 'path';
 
 export class TextParserController implements Controller {
   public path = '/text';
@@ -15,15 +17,16 @@ export class TextParserController implements Controller {
     const html: string = await fetch(url).then((x) => x.text());
 
     const res = parse(html, {
-      lowerCaseTagName: false, // convert tag name to lower case (hurt performance heavily)
-      comment: false, // retrieve comments (hurt performance slightly)
+      lowerCaseTagName: false,
+      comment: false,
       blockTextElements: {
-        script: false, // keep text content when parsing
-        noscript: false, // keep text content when parsing
-        style: false, // keep text content when parsing
-        pre: false, // keep text content when parsing
+        script: false,
+        noscript: false,
+        style: false,
+        pre: false,
       },
     });
+
     return res
       .querySelectorAll('p')
       .map((el) => el.outerHTML)
@@ -31,9 +34,14 @@ export class TextParserController implements Controller {
   };
 
   private getText = async (req: express.Request, res: express.Response) => {
-    console.log(req.body.link);
     const text = await this.getAndParseText(req.body.link);
-    return res.send(text);
+    //Loading for  now
+    fs.readFile(pth.join(__dirname, './textSample.txt'), (err, data) => {
+      if (err) {
+        throw err;
+      }
+      return res.send(data.toString());
+    });
   };
 
   private initRoutes(): void {
