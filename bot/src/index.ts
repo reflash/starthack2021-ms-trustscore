@@ -1,5 +1,5 @@
 import Telegraf from 'telegraf';
-
+import axios from 'axios';
 const bot = new Telegraf('1631967097:AAGIxpszi8lq3IM9K8BoWrRiHTm0p9mXnBY');
 
 const helpMessage = `
@@ -12,8 +12,26 @@ bot.start((ctx) => {
   ctx.reply(helpMessage);
 });
 
-bot.on('text', (ctx) => {
-  ctx.reply('as');
+bot.on('text', async (ctx) => {
+  const inputText: string | undefined = ctx.message?.text;
+  if (
+    inputText &&
+    (inputText?.startsWith('http://www.') ||
+      inputText?.startsWith('https://www.'))
+  ) {
+    const res = await axios.post(
+      'localhost:3000/api/text',
+      { link: inputText },
+      {
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }
+    );
+    ctx.reply(res.data);
+  } else {
+    ctx.reply('Please enter a valid url');
+  }
 });
 
 bot.launch();
