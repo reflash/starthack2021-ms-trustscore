@@ -15,6 +15,7 @@ export class TrustScoreController implements Controller {
   private calculateTrustScore = async (req: express.Request, res: express.Response) => {
     console.log(req.body.link);
     const text = await WebpageParser.getParsedText(req.body.link);
+    
     // Finding claims
     const textEntitiesInfo = await EntityRecognitionService.getEntitySentencesForText(text);
     return res.send(textEntitiesInfo);
