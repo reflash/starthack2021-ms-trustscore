@@ -24,7 +24,10 @@ export class TextParserController implements Controller {
         pre: false, // keep text content when parsing
       },
     });
-    return res.querySelectorAll('p').toString();
+    return res
+      .querySelectorAll('p')
+      .map((el) => el.outerHTML)
+      .toString();
   };
 
   private getText = async (req: express.Request, res: express.Response) => {

@@ -14,23 +14,27 @@ bot.start((ctx) => {
 
 bot.on('text', async (ctx) => {
   const inputText: string | undefined = ctx.message?.text;
-  if (
-    inputText &&
-    (inputText?.startsWith('http://www.') ||
-      inputText?.startsWith('https://www.'))
-  ) {
-    const res = await axios.post(
-      'localhost:3000/api/text',
-      { link: inputText },
-      {
-        headers: {
-          'Content-type': 'application/json',
-        },
-      }
-    );
-    ctx.reply(res.data);
-  } else {
-    ctx.reply('Please enter a valid url');
+  try {
+    if (
+      inputText &&
+      (inputText?.startsWith('http://www.') ||
+        inputText?.startsWith('https://www.'))
+    ) {
+      const res = await axios.post(
+        'http://localhost:3000/api/text',
+        { link: inputText },
+        {
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }
+      );
+      ctx.reply(res.data.slice(0, 2000));
+    } else {
+      ctx.reply('Please enter a valid url');
+    }
+  } catch (e) {
+    ctx.reply("Couldn't find any info in this website");
   }
 });
 
