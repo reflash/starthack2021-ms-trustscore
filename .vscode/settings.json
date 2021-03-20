@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.deploySubpath": "space-jungle-api",
+    "appService.defaultWebAppToDeploy": "/subscriptions/2eeb82b1-e959-4a8f-b5eb-603859f565e7/resourceGroups/StartHack/providers/Microsoft.Web/sites/space-jungle"
+}
