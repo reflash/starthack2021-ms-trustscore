@@ -1,8 +1,5 @@
 import * as express from 'express';
 import Controller from '../interfaces/controller.interface';
-import HttpException from '../exceptions/HttpException';
-import HTTPStatusCodes from '../enums/HTTPStatusCodes';
-import ErrorMessages from '../enums/ErrorMessages';
 
 class UserController implements Controller {
     public path = '/user';
@@ -14,12 +11,7 @@ class UserController implements Controller {
 
     public getAllUsers = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
         let users = [];
-        try {
-            console.log("Dummy method");
-        } catch (e) {
-            next(new HttpException(HTTPStatusCodes.INTERNAL_ERROR, ErrorMessages.INTERNAL_ERROR));
-        }
-
+        console.log("Dummy method");
         return res.json(users);
     }
 

@@ -4,6 +4,8 @@ import * as express from 'express';
 import * as cors from 'cors';
 import * as compression from 'compression';
 
+require('express-async-errors');
+
 import Controller from './interfaces/controller.interface';
 import errorMiddleware from './middleware/error.middleware';
 
