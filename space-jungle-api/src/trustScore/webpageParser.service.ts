@@ -1,9 +1,19 @@
 import { parse } from 'node-html-parser';
 import fetch from 'node-fetch';
+import * as fs from 'fs';
+import * as pth from 'path';
 
 const WebpageParser = {
     getParsedText: async (url) => {
         //const html: string = await fetch(url).then((x) => x.text());
+
+        //Loading for  now
+        // fs.readFile(pth.join(__dirname, './textSample.txt'), (err, data) => {
+        //     if (err) {
+        //         throw err;
+        //     }
+        //     return res.send(data.toString());
+        // });
 
         // const res = parse(html, {
         //     lowerCaseTagName: false, // convert tag name to lower case (hurt performance heavily)

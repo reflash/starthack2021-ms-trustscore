@@ -1,6 +1,9 @@
 import Telegraf from 'telegraf';
 import axios from 'axios';
-const bot = new Telegraf('1631967097:AAGIxpszi8lq3IM9K8BoWrRiHTm0p9mXnBY');
+
+require('dotenv').config()
+
+const bot = new Telegraf(""+process.env.BOT_TOKEN);
 
 const helpMessage = `
 Hi everyone!
@@ -20,11 +23,11 @@ bot.on('text', async (ctx) => {
   try {
     if (
       inputText &&
-      (inputText?.startsWith('http://www.') ||
-        inputText?.startsWith('https://www.'))
+      (inputText?.startsWith('http://') ||
+        inputText?.startsWith('https://'))
     ) {
       const res = await axios.post(
-        'http://localhost:5000/api/text',
+        `${process.env.BACKEND_API}`,
         { link: inputText },
         {
           headers: {
