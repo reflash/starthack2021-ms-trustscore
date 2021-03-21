@@ -27,7 +27,7 @@ const WebpageParser = {
         return `# Breast cancer overtakes lung as most common cancer-WHO
 
         By Reuters Staff
-        
+
         2 MIN READ
         
         GENEVA, Feb 2 (Reuters) - Breast cancer has overtaken lung cancer as the most common form of the disease, the World Health Organisation said on Tuesday.
@@ -37,11 +37,11 @@ const WebpageParser = {
         Lung cancer was the most common type for the last two decades, but is now in second place, ahead of colorectal cancer, which is the third most widespread, Ilbawi said.
         
         Ilbawi noted that obesity in women was a common risk factor in breast cancer, and is also driving overall cancer numbers.
-        
+        Automatic texting helps ease stress of chemotherapy in breast cancer patients
         As the global population grows and life expectancy increases, cancer is expected to become more common, rising to about 30 million new cases per year in 2040 from 19.3 million in 2020, Ilbawi said.
         
-        The coronavirus pandemic is disrupting cancer treatment in about half the countries it surveyed, Ilbawi said, pointing to delays in diagnosis, healthcare workers being under extreme stress and research being impacted. (Reporting by Emma Thomasson and Stephanie Nebehay; editing by Alexandra Hudson)`;
-
+        The coronavirus pandemic is disrupting cancer treatment in about half the countries it surveyed, Ilbawi said, pointing to delays in diagnosis, healthcare workers being under extreme stress and research being impacted. (Reporting by Emma Thomasson and Stephanie Nebehay; editing by Alexandra Hudson)
+        Intensive Vegetable-Fruit Diet Shows No Effect on Breast Cancer        
     }
 };
 

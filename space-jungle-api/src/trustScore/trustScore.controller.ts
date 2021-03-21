@@ -22,6 +22,11 @@ export class TrustScoreController implements Controller {
     // Sending the claims for a check to claim-check-api
     const claimCheckResult = await FakeClaimCheckClientService.checkClaims(textEntitiesInfo);
 
+    // Attach original claims next to explanations
+    claimCheckResult.claims.forEach((c, i) => {
+      c["original_text"] = textEntitiesInfo[i];
+    })
+
     return res.send(claimCheckResult);
   };
 

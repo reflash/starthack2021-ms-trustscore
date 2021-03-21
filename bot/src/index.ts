@@ -6,9 +6,11 @@ require('dotenv').config()
 const bot = new Telegraf(""+process.env.BOT_TOKEN);
 
 const helpMessage = `
-Hi everyone!
-This bot is made to simplify your life! 
-Just send us the link of the article and we will make it so much simpler!
+Hi!
+This bot is here to help you find out whether you can trust a medical text on the internet.
+You provide a link to the text and we provide you a trust score along with untrustworthy claims.
+We created a bot for simplicity reasons, ideally we see the implementation as a browser extension 
+which will automatically analyze the pages that user visits.
 `;
 
 bot.start((ctx) => {
@@ -35,7 +37,20 @@ bot.on('text', async (ctx) => {
           },
         }
       );
-      ctx.reply(res.data.slice(0, 2000));
+
+      console.log("RESPONSE: ", res.data);
+
+      let replyText = `The trustscore for the article is: ${res.data.score}\n`;
+
+      res.data.claims.forEach((cl: any)=> {
+        console.log("claim=", cl);
+        if (cl.label == "false") {
+          replyText +=`FAKE claim: ${cl.original_text}\n`;
+          replyText += `Explanation: ${cl.explanation}\n\n`;
+        }
+      });
+
+      ctx.reply(replyText);
     } else {
       ctx.reply('Please enter a valid url');
     }
