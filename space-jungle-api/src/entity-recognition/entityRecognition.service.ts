@@ -38,12 +38,16 @@ const EntityRecognitionService = {
 
         console.log("AZ body=", data);
 
-        let res = await axios.post(process.env.AZ_ENDPOINT, data );
+        let res = await axios.post(process.env.AZ_ENDPOINT, data);
         console.log(res.data.documents);
         return res.data;
     },
 
     getEntitySentencesForText: async (text: string) => {
+
+        //TODO: uncomment this when Text Analytics API is ok
+        return [`The coronavirus pandemic is disrupting cancer treatment in about half the countries it surveyed, Ilbawi said, pointing to delays in diagnosis, healthcare workers being under extreme stress and research being impacted.` ,`Intensive Vegetable-Fruit Diet Shows No Effect on Breast Cancer`];
+
         const textChunks = EntityRecognitionService.getTextAsChunks(text);
         const sentences = EntityRecognitionService.splitTextIntoTrimmedSentences(text);
         const entitiesInfo = await EntityRecognitionService.getEntitiesInfoForChunks(textChunks);
