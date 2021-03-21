@@ -41,7 +41,7 @@ const WebpageParser = {
         As the global population grows and life expectancy increases, cancer is expected to become more common, rising to about 30 million new cases per year in 2040 from 19.3 million in 2020, Ilbawi said.
         
         The coronavirus pandemic is disrupting cancer treatment in about half the countries it surveyed, Ilbawi said, pointing to delays in diagnosis, healthcare workers being under extreme stress and research being impacted. (Reporting by Emma Thomasson and Stephanie Nebehay; editing by Alexandra Hudson)
-        Intensive Vegetable-Fruit Diet Shows No Effect on Breast Cancer        
+        Intensive Vegetable-Fruit Diet Shows No Effect on Breast Cancer`       
     }
 };
 
