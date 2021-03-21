@@ -2,7 +2,7 @@ import * as express from 'express';
 import Controller from '../interfaces/controller.interface';
 import WebpageParser from './webpageParser.service';
 import EntityRecognitionService from '../entity-recognition/entityRecognition.service';
-
+import FakeClaimCheckClientService from '../claim-check-client/fakeClaimCheckClient.service';
 
 export class TrustScoreController implements Controller {
   public path = '/calc_trust_score';
@@ -18,7 +18,11 @@ export class TrustScoreController implements Controller {
     
     // Finding claims
     const textEntitiesInfo = await EntityRecognitionService.getEntitySentencesForText(text);
-    return res.send(textEntitiesInfo);
+
+    // Sending the claims for a check to claim-check-api
+    const claimCheckResult = await FakeClaimCheckClientService.checkClaims(textEntitiesInfo);
+
+    return res.send(claimCheckResult);
   };
 
   private initRoutes(): void {

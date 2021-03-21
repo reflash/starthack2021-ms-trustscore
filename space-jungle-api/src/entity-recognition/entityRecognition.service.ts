@@ -44,6 +44,10 @@ const EntityRecognitionService = {
     },
 
     getEntitySentencesForText: async (text: string) => {
+
+        //TODO: uncomment this when Text Analytics API is ok
+        return [];
+
         const textChunks = EntityRecognitionService.getTextAsChunks(text);
         const sentences = EntityRecognitionService.splitTextIntoTrimmedSentences(text);
         const entitiesInfo = await EntityRecognitionService.getEntitiesInfoForChunks(textChunks);
