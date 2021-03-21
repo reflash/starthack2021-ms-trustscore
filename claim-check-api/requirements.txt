@@ -1,0 +1,5 @@
+jupyterlab
+pandas
+Flask
+scipy
+sentence-transformers
