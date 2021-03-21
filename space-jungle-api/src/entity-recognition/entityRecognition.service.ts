@@ -38,7 +38,7 @@ const EntityRecognitionService = {
 
         console.log("AZ body=", data);
 
-        let res = await axios.post(process.env.AZ_ENDPOINT, data );
+        let res = await axios.post(process.env.AZ_ENDPOINT, data);
         console.log(res.data.documents);
         return res.data;
     },
