@@ -40,6 +40,7 @@ bot.on('text', async (ctx) => {
       ctx.reply('Please enter a valid url');
     }
   } catch (e) {
+    console.log("Error:", e);
     ctx.reply("Couldn't find any info in this website");
   }
 });
