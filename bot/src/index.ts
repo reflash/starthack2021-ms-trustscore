@@ -40,17 +40,15 @@ bot.on('text', async (ctx) => {
 
       console.log("RESPONSE: ", res.data);
 
-      let replyText = `The trustscore for the article is: ${res.data.score}\n`;
+      ctx.reply(`The trustscore for the article is: ${res.data.score}`);
 
       res.data.claims.forEach((cl: any)=> {
         console.log("claim=", cl);
         if (cl.label == "false") {
-          replyText +=`FAKE claim: ${cl.original_text}\n`;
-          replyText += `Explanation: ${cl.explanation}\n\n`;
+          ctx.reply(`FAKE claim: ${cl.original_text}`);
+          ctx.reply(`EXPLANATION: ${cl.explanation}`);
         }
       });
-
-      ctx.reply(replyText);
     } else {
       ctx.reply('Please enter a valid url');
     }
