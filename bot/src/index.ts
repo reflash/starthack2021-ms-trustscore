@@ -1,6 +1,8 @@
 import Telegraf from 'telegraf';
 import axios from 'axios';
 
+import express from 'express';
+
 require('dotenv').config()
 
 const bot = new Telegraf(""+process.env.BOT_TOKEN);
@@ -59,3 +61,5 @@ bot.on('text', async (ctx) => {
 });
 
 bot.launch();
+const app: express.Express = express();
+app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}...`));
